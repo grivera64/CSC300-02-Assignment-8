@@ -77,41 +77,28 @@ public class VaccinationSite {
         /* Local Variables */
         int value = this.randy.nextInt(10) + 1;
         
-        /* Return a Patient based on the rolled value */
-        return switch(value) {                                                      // (!) Preview Feature for JDK-13 and below, use
-                                                                                    // --enable-preview --release 13 flags to run
+        switch (value) {
         
-        case 1, 2, 3, 4, 5 -> new Senior(this.currentTime);                         // 50% chance
-        case 6, 7, 8, 9 -> new Adult(this.currentTime);                             // 40% chance
-        case 10 -> new OlderTeen(this.currentTime);                                 // 10% chance
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            return new Senior(this.currentTime);
+            
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            return new Adult(this.currentTime);
+            
+        case 10:
+            return new OlderTeen(this.currentTime);
+            
+        default:
+            throw new IllegalArgumentException("Value is not between 1-10");
         
-        default -> throw new IllegalArgumentException("Value is not between 1-10");
-        
-        };
-        
-        /* If the above doesn't work, comment it out and uncomment what's below */
-//        switch (value) {
-//        
-//        case 1:
-//        case 2:
-//        case 3:
-//        case 4:
-//        case 5:
-//            return new Senior(this.currentTime);
-//            
-//        case 6:
-//        case 7:
-//        case 8:
-//        case 9:
-//            return new Adult(this.currentTime);
-//            
-//        case 10:
-//            return new OlderTeen(this.currentTime);
-//            
-//        default:
-//            throw new IllegalArgumentException("Value is not between 1-10");
-//        
-//        }
+        }
         
     }
     

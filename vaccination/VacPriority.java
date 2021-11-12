@@ -55,35 +55,25 @@ public class VacPriority implements Comparator<Patient> {
             
         }
         
-        return switch (classString) {                                               // (!) Preview Feature for JDK-13 and below, use
-                                                                                    // --enable-preview --release 13 flags to run
-        case "Senior" -> 1;
-        case "Adult" -> 2;
-        case "OlderTeen" -> 3;
-        default -> throw new IllegalArgumentException("Invalid Patient Provided");
+        switch (classString) {
         
-        };
+        case "Senior":
+            
+            return 1;
+            
+        case "Adult":
+            
+            return 2;
+            
+        case "OlderTeen":
+            
+            return 3;
+            
+        default:
+            
+            throw new IllegalArgumentException("Invalid Patient Provided");
         
-        /* If the above doesn't work, comment it out and uncomment the code below */
-//        switch (classString) {
-//        
-//        case "Senior":
-//            
-//            return 1;
-//            
-//        case "Adult":
-//            
-//            return 2;
-//            
-//        case "OlderTeen":
-//            
-//            return 3;
-//            
-//        default:
-//            
-//            throw new IllegalArgumentException("Invalid Patient Provided");
-//        
-//        }
+        }
         
     }
 
